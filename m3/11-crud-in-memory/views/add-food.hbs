@@ -1,0 +1,25 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+
+      <form method="POST">
+        <label>Food Name:</label>
+        <input type="text" name="foodName" />
+        <label>Calories:</label>
+        <input type="text" name="calories" />
+
+        <label>Meal</label>
+        <input type="radio" name="cuisine" value="western" checked />Western
+        <!-- westen is default-->
+        <input type="radio" name="cuisine" value="chinese" />Chinese
+        <input type="radio" name="cuisine" value="japanese" />Japanese
+
+        <input type="checkbox" name="tags" value="cheap" />Cheap
+        <input type="checkbox" name="tags" value="free" />Free
+
+        <input type="submit" value="Add" />
+
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}
