@@ -1,0 +1,9 @@
+{{#extends 'base'}}
+    {{#block 'content'}}
+        {{#each students}}
+            {{@index}} {{this}}
+        {{else}}
+            Not students!
+        {{/each}}
+    {{/block}}
+{{/extends}}

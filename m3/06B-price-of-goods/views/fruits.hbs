@@ -1,0 +1,13 @@
+{{#extends 'base'}}
+    {{#block 'fruits'}}
+
+        <h1>Fruity Land!</h1>
+        <form method="POST">
+            <label for="items">Fruits</label>
+            <input type="checkbox" name="items" value="apple">Apple</input>
+            <input type="checkbox" name="items" value="banana">Banana</input>
+            <input type="submit" value="calculate cost">
+        </form>
+
+    {{/block}}
+{{/extends}}

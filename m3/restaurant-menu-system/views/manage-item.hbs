@@ -1,0 +1,21 @@
+{{#extends "base"}}
+  {{#block "content"}}
+
+    <div class="container">
+
+      {{#each allFood}}
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">{{this.foodName}}</h5>
+            <p class="card-text">Price: {{this.foodPrice}}</p>
+            <a href="update-item/{{this.id}}" data-id="{{this.id}}" class="btn btn-primary">Update</a>
+            <a href="delete-item/{{this.id}}" data-id="{{this.id}}" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      {{/each}}
+      <!-- end of container -->
+    </div>
+
+  {{/block}}
+{{/extends}}

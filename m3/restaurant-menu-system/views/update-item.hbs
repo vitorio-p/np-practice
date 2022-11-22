@@ -1,0 +1,32 @@
+{{#extends "base"}}
+  {{#block "content"}}
+
+    <div class="container">
+      <h1>Update item</h1>
+      <form method="POST">
+        <div class="mb-3">
+          <label for="foodName" class="form-label">Food Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="foodName"
+            name="foodName"
+            value="{{foodRecord.foodName}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="foodPrice" class="form-label">Price</label>
+          <input
+            type="text"
+            class="form-control"
+            id="foodPrice"
+            name="foodPrice"
+            value="{{foodRecord.foodPrice}}"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+
+  {{/block}}
+{{/extends}}

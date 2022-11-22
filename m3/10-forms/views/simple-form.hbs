@@ -1,0 +1,26 @@
+{{#extends 'base'}}
+    {{#block 'content'}}
+    <form method='POST'>
+        <label>food item:</label>
+        <input type='text' name='foodName'>
+
+        <input type="radio" name="cuisine" value="western" checked>western <!-- westen is default-->
+        <input type="radio" name="cuisine" value="chinese">chinese
+        <input type="radio" name="cuisine" value="japanese">japanese
+
+        <input type="checkbox" name="tags" value="cheap">cheap
+        <input type="checkbox" name="tags" value="free">free
+
+        <input type="submit" value="yumz">
+
+    </form>
+
+    {{#if err}}
+        {{errorMsg}}
+
+    {{else}}
+    
+    {{/if}}
+
+    {{/block}}
+{{/extends}}

@@ -1,0 +1,15 @@
+{{#extends "base"}}
+    {{#block "content"}}
+    
+        {{#list students}}
+            <!-- for simple array -->
+            <!--{{this}}-->
+
+            <!-- for objects --> 
+            {{firstName}} {{lastName}}
+        {{else}}
+            No students hello there!
+        {{/list}}
+    
+    {{/block}}
+{{/extends}}

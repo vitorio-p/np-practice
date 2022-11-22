@@ -1,0 +1,15 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      {{#each allFood}}
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{this.foodName}}</h5>
+            <p class="card-text">Calories: {{this.calories}}</p>
+            <p class="card-text">Tags: {{this.tags}}</p>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/block}}
+{{/extends}}
