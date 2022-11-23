@@ -1,13 +1,20 @@
 {{#extends "base"}}
   {{#block "content"}}
-    <h1>Current Menu</h1>
+
     <div class="container">
+      <h1>Current Menu</h1>
+      <a href="/add-food" class="btn btn-primary">Add food</a>
       {{#each allFood}}
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">{{this.foodName}}</h5>
             <p class="card-text">Calories: {{this.calories}}</p>
             <p class="card-text">Tags: {{this.tags}}</p>
+            <a
+              href="/update-food/{{this.id}}"
+              class="btn btn-primary"
+            >Update</a>
+            <a href="#" class="btn btn-danger">Delete</a>
           </div>
         </div>
       {{/each}}

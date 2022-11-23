@@ -2,6 +2,10 @@ const express = require("express");
 const hbs = require("hbs");
 const waxOn = require("wax-on");
 
+require("handlebars-helpers")({
+  handlebars: hbs,
+});
+
 let app = express(); //create the express application
 app.set("view engine", "hbs"); // inform express that we are using hbs as the view engine
 waxOn.on(hbs.handlebars); // enable wax-on for handlebars (for template inheritance)
@@ -66,7 +70,72 @@ app.post("/add-food", function (req, res) {
     tags: selectedTags,
   };
 
+  // not used with the other setup
+  let tempRecord = new FoodRecord(
+    Math.floor(Math.random() * 10000 + 1),
+    foodName,
+    calories,
+    meal,
+    selectedTags
+  );
+
+  // foodRecords.push(tempRecord);
   foodRecords.push(newFood);
+
+  res.redirect("/all-food");
+});
+
+function FoodRecord(id, foodname, calories, meal, tags) {
+  this.id = id;
+  this.foodName = foodName;
+  this.calorie = calorie;
+  this.meal = meal;
+  this.tags = tags;
+}
+
+// Update
+app.get("/update-food/:food_record_id", function (req, res) {
+  let id = req.params.food_record_id;
+  let tempRecord = null;
+  for (let record of foodRecords) {
+    foodRecord = record;
+    if (record.id == id) {
+      tempRecord = record;
+      break;
+    }
+  }
+  res.render("update-food", {
+    foodRecord: tempRecord,
+  });
+});
+
+app.post("/update-food/:food-record_id", function (req, res) {
+  let selectedTags = [];
+
+  if (Array.isArray(req.body.tags)) {
+    selectedTags = req.body.tags;
+  } else {
+    selectedTags.push(req.body.tags);
+  }
+
+  let tempRecord = {
+    id: req.body.food_record_id,
+    foodName: req.body.foodName,
+    calories: req.body.calories,
+    meal: req.body.meal,
+    tags: selectedTags,
+  };
+
+  let index = -1;
+
+  for (let i = 0; i < foodRecords.length; i++) {
+    if (foodRecords[i].id == req.params.food_record_id) {
+      index = i;
+      break;
+    }
+  }
+
+  foodRecords[index] = tempRecords;
 
   res.redirect("/all-food");
 });

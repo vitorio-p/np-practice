@@ -1,0 +1,43 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <h1>Update {{foodRecord.foodName}}</h1>
+      <form method="POST">
+        <label>Food Name:</label>
+        <input type="text" name="foodName" value="{{foodRecord.foodName}}"/>
+        <label>Calories:</label>
+        <input type="text" name="calories" value="{{foodRecord.calories}}"/>
+
+        <label>Meal</label>
+        <input
+          type="radio"
+          name="cuisine"
+          value="western"
+          {{#eq foodRecord.meal "western"}}
+          checked{{/eq}}
+        />Western
+        <!-- westen is default-->
+        <input
+          type="radio"
+          name="cuisine"
+          value="chinese"
+          {{#eq foodRecord.meal "chinese"}}
+          checked{{/eq}}
+        />Chinese
+        <input
+          type="radio"
+          name="cuisine"
+          value="japanese"
+          {{#eq foodRecord.meal "japanese"}}
+          checked{{/eq}}
+        />Japanese
+
+        <input type="checkbox" class='form-check-input' name="tags" value="cheap"  {{#inArray foodRecord.tags 'cheap'}}checked{{/inArray}}/>Cheap
+        <input type="checkbox" class='form-check-input' name="tags" value="free"  {{#inArray foodRecord.tags 'free'}}checked{{/inArray}}/>Free
+
+        <input type="submit" value="Add" />
+
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}

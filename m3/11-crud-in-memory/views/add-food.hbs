@@ -1,23 +1,49 @@
 {{#extends "base"}}
   {{#block "content"}}
     <div class="container">
-
+      <h1>Add new item</h1>
       <form method="POST">
-        <label>Food Name:</label>
-        <input type="text" name="foodName" />
-        <label>Calories:</label>
-        <input type="text" name="calories" />
+        <label class="form-label">Food Name:</label>
+        <input class="form-control" type="text" name="foodName" />
+        <label class="form-label">Calories:</label>
+        <input class="form-control" type="text" name="calories" />
 
         <label>Meal</label>
-        <input type="radio" name="cuisine" value="western" checked />Western
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="western"
+          checked
+        />Western
         <!-- westen is default-->
-        <input type="radio" name="cuisine" value="chinese" />Chinese
-        <input type="radio" name="cuisine" value="japanese" />Japanese
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="chinese"
+        />Chinese
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="japanese"
+        />Japanese
 
-        <input type="checkbox" name="tags" value="cheap" />Cheap
-        <input type="checkbox" name="tags" value="free" />Free
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="cheap"
+        />Cheap
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="free"
+        />Free
 
-        <input type="submit" value="Add" />
+        <input type="submit" class="btn btn-primary" value="Add" />
 
       </form>
     </div>
