@@ -85,7 +85,7 @@ app.post("/add-food", function (req, res) {
   res.redirect("/all-food");
 });
 
-function FoodRecord(id, foodname, calories, meal, tags) {
+function FoodRecord(id, foodName, calorie, meal, tags) {
   this.id = id;
   this.foodName = foodName;
   this.calorie = calorie;
@@ -137,6 +137,33 @@ app.post("/update-food/:food-record_id", function (req, res) {
 
   foodRecords[index] = tempRecords;
 
+  res.redirect("/all-food");
+});
+
+// DELETE
+app.get("/delete-food/:delete_record_id", function (req, res) {
+  let foodRecord = foodRecords.find(function (record) {
+    if (record.id == req.params.delete_record_id) {
+      return true; // if found, it will return the foodRecord with the same ID
+    } else {
+      return false;
+    }
+  });
+  res.render("delete-food", {
+    foodRecord: foodRecord,
+  });
+});
+
+app.post("/delete-food/:delete_record_id", function (req, res) {
+  let indexToDelete = foodRecords.findIndex(function (record) {
+    if (record.id == req.params.delete_record_id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  foodRecords.splice(indexToDelete, 1);
   res.redirect("/all-food");
 });
 
