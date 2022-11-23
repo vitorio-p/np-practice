@@ -1,0 +1,113 @@
+{{#extends "base"}}
+  {{#block "content"}}
+  <h2>Add New Item</h2>
+    <form method="POST">
+      <div class="mb-3">
+        <label for="item" class="form-label">Item</label>
+        <input type="text" class="form-control" name="itemName" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          aria-describedby="emailHelp"
+        />
+        <div id="emailHelp" class="form-text">We'll never share your email with
+          anyone else.</div>
+      </div>
+      <div class="mb-1">
+        <div class="mb-1">Where did you find it?</div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="location" value="Taxi" />
+          <label class="form-check-label" for="Taxi">
+            Taxi
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="location" value="Bus" />
+          <label class="form-check-label" for="Bus">
+            Bus
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="location" value="MRT" />
+          <label class="form-check-label" for="MRT">
+            MRT
+          </label>
+        </div>
+      </div>
+      <div class="mb-1">
+        <div class="mb-1">Properties of Item</div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="properties"
+            value="Bulky"
+          />
+          <label class="form-check-label" for="Bulky">
+            Bulky
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="properties"
+            value="Expensive"
+          />
+          <label class="form-check-label" for="Expensive">
+            Expensive
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="properties"
+            value="Colorful"
+          />
+          <label class="form-check-label" for="Colorful">
+            Colorful
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="properties"
+            value="Branded"
+          />
+          <label class="form-check-label" for="Branded">
+            Branded
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="properties"
+            value="Small"
+          />
+          <label class="form-check-label" for="Small">
+            Small
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="properties"
+            value="Plain"
+          />
+          <label class="form-check-label" for="Plain">
+            Plain
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/block}}
+{{/extends}}
