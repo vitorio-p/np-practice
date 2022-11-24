@@ -1,0 +1,27 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <form method="POST">
+      <div class="container">
+        <div class="mb-3">
+          <label>Number A</label>
+          <input type="number" name="a" />
+          <label>Number B</label>
+          <input type="number" name="b" />
+        </div>
+        <div class="mb-3">
+          <label>Add</label>
+          <input type="radio" name="operation" value="add" required />
+          <label>Minus</label>
+          <input type="radio" name="operation" value="minus" required />
+          <label>Multiply</label>
+          <input type="radio" name="operation" value="multiply" required />
+          <label>Divide</label>
+          <input type="radio" name="operation" value="divide" required />
+        </div>
+        <div>
+          <input type="submit" value="Calculate" />
+        </div>
+      </div>
+    </form>
+  {{/block}}
+{{/extends}}
