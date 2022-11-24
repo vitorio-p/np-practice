@@ -1,0 +1,75 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <h1>Update {{foodRecord.foodName}}</h1>
+      <form method="POST">
+        <label class="form-label">Food Name:</label>
+        <input class="form-control" type="text" name="foodName" value="{{foodRecord.foodName}}"/>
+        <label class="form-label">Calories:</label>
+        <input class="form-control" type="text" name="calories" value="{{foodRecord.calories}}"/>
+        <label>Meal</label>
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="breakfast"
+          {{#eq foodRecord.meal "breakfast"}}
+          checked{{/eq}}
+        />Breakfast
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="lunch"
+          {{#eq foodRecord.meal "lunch"}}
+          checked{{/eq}}
+        />Lunch
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="dinner"
+          {{#eq foodRecord.meal "dinner"}}
+          checked{{/eq}}
+        />Dinner
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="snack"
+          {{#eq foodRecord.meal "snack"}}
+          checked{{/eq}}
+        />Snack
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="organic"
+          {{#inArray foodRecord.tags 'organic'}}checked{{/inArray}}
+        />Organic
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="home-cooked"
+          {{#inArray foodRecord.tags 'home-cooked'}}checked{{/inArray}}
+        />Home-cooked
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="gluten-free"
+          {{#inArray foodRecord.tags 'gluten-free'}}checked{{/inArray}}
+        />Gluten-free
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="less-oil"
+          {{#inArray foodRecord.tags 'less-oil'}}checked{{/inArray}}
+        />Less Oil
+        <input type="submit" class="btn btn-primary" value="Add" />
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}

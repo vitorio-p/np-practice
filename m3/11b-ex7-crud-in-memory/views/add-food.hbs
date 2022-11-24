@@ -1,0 +1,63 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <h1>Add New Food</h1>
+      <form method="POST">
+        <label class="form-label">Food Name:</label>
+        <input class="form-control" type="text" name="foodName" />
+        <label class="form-label">Calories:</label>
+        <input class="form-control" type="text" name="calories" />
+        <label>Meal</label>
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="breakfast"
+        />Breakfast
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="lunch"
+        />Lunch
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="dinner"
+        />Dinner
+        <input
+          type="radio"
+          class="form-check-input"
+          name="cuisine"
+          value="snack"
+        />Snack
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="organic"
+        />Organic
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="home-cooked"
+        />Home-cooked
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="gluten-free"
+        />Gluten-free
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="less-oil"
+        />Less Oil
+        <input type="submit" class="btn btn-primary" value="Add" />
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}
