@@ -74,7 +74,6 @@ app.post(
   check("itemName").isLength({ min: 3, max: 200 }),
   check("email").isEmail(),
   check("location").not().isEmpty(),
-  check("properties").not().isEmpty(),
   function (req, res) {
     const err = validationResult(req);
 
@@ -94,7 +93,10 @@ app.post(
         }
       }
 
-      if (properties.length > 3) {
+      if (properties.length == 0) {
+        throw "No properties detected. Please return to the previous page.";
+      }
+      else if (properties.length > 3) {
         throw "Too many properties. Please return to the previous page.";
       }
 
