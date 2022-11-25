@@ -1,0 +1,18 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <a href="/add-posting" class="btn btn-primary mb-3">Add New Posting</a>
+      {{#each allItems}}
+        <div class="card mb-3" style="width 18rm;">
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">Price: ${{this.price}}</p>
+            <p class="card-text">Payment methods: {{this.payments}}</p>
+            <p class="card-text">Type: {{this.type}}</p>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+  {{/block}}
+{{/extends}}

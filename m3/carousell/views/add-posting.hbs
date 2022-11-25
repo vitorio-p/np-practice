@@ -1,0 +1,82 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <h1>Add New Posting</h1>
+      <form method="POST" class="container">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" name="title" />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input type="text" class="form-control" name="price" />
+        </div>
+        <div class="mb-3">
+          <label for="payments" class="form-label">Payments</label>
+
+          <input
+            type="radio"
+            class="from-check-input"
+            name="payments"
+            value="cod"
+          />
+          <label for="payments" class="form-label">COD</label>
+
+          <input
+            type="radio"
+            class="from-check-input"
+            name="payments"
+            value="paynow"
+          />
+          <label for="payments" class="form-label">PayNow</label>
+
+          <input
+            type="radio"
+            class="from-check-input"
+            name="payments"
+            value="cheque"
+          />
+          <label for="payments" class="form-label">Cheque</label>
+        </div>
+        <div class="mb-3">
+
+          <label for="type" class="form-label">Type</label>
+
+          <input
+            type="checkbox"
+            class="from-check-input"
+            name="type"
+            value="clothing"
+          />
+          <label for="type" class="form-label">Clothing</label>
+
+          <input
+            type="checkbox"
+            class="from-check-input"
+            name="type"
+            value="entertainment"
+          />
+          <label for="type" class="form-label">Entertainment</label>
+
+          <input
+            type="checkbox"
+            class="from-check-input"
+            name="type"
+            value="electronic"
+          />
+          <label for="type" class="form-label">Electronic</label>
+
+          <input
+            type="checkbox"
+            class="from-check-input"
+            name="type"
+            value="others"
+          />
+          <label for="type" class="form-label">Others</label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add">
+        </div>
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}
