@@ -3,6 +3,11 @@ const express = require("express");
 const hbs = require("hbs");
 const wax = require("wax-on");
 
+// require in 188 handlebar helpers
+require("handlebars-helpers")({
+  handlebars: hbs,
+});
+
 // creates a new instance of an express application
 // the `app` variable shouldn't be changed
 const app = express();
@@ -14,10 +19,8 @@ app.set("view engine", "hbs");
 wax.on(hbs.handlebars);
 wax.setLayoutPath("./views/layouts");
 
-// require in 188 handlebar helpers
-require("handlebars-helpers")({
-  handlebars: hbs.handlebars,
-});
+//this allows us to handle forms
+app.use(express.urlencoded({ extended: false }));
 
 // CREATE A GLOBAL ARRAY TO ACT AS IN THE IN-MEMORY DATABASE
 // the global array foodRecords store all the food entries that the user has typed in
@@ -81,6 +84,7 @@ app.post("/add-food", function (req, res) {
     meal: meal,
     tags: selectedTags,
   };
+  
   foodRecords.push(newFood);
 
   res.redirect("/all-food");
