@@ -1,0 +1,52 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <h2>Edit a movie!</h2>
+      <form method="POST">
+        <div class="mb-2">
+          <label for="movieTitle" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="movieTitle"
+            name="movieTitle"
+            value="{{movieRecord.movieTitle}}"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="genre" class="form-label">Genre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="genre"
+            name="genre"
+            value="{{movieRecord.genre}}"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="duration" class="form-label">Duration</label>
+          <input
+            type="text"
+            class="form-control"
+            id="duration"
+            name="duration"
+            value="{{movieRecord.duration}}"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="rating" class="form-label">Rating</label>
+          <input
+            type="text"
+            class="form-control"
+            id="rating"
+            name="rating"
+            value="{{movieRecord.rating}}"
+          />
+        </div>
+        <div>
+          <button type="submit" class="btn btn-secondary">Edit</button>
+        </div>
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}
