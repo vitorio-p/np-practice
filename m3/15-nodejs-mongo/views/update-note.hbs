@@ -1,0 +1,12 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <h1>Update Note for {{pokemonRecord.name}}</h1>
+    <form method="POST">
+      <label>Notes: </label>
+      <textarea name="content" class="form-bootstrap">
+        {{pokemonRecord.notes.0.content}}
+      </textarea>
+      <input type="submit" class="btn btn-primary">
+    </form>
+  {{/block}}
+{{/extends}}

@@ -1,0 +1,23 @@
+{
+  "name": "15-nodejs-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "handlebars-helpers": "^0.10.0",
+    "hbs": "^4.2.0",
+    "mongodb": "^4.12.1",
+    "wax-on": "^1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

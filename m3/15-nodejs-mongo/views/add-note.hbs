@@ -1,0 +1,12 @@
+{{#extends 'base'}}
+  {{#block 'content'}}
+  <h1>Add note for {{pokemonRecord.name}}</h1>
+    <form method="POST">
+      <div>
+        <label class="form-label">Note: </label>
+        <input type="text" class="form-control" name="note">
+        <input type="submit" class="btn btn-primary mt-3" value="Add Pokemon">
+      </div>
+    </form>
+  {{/block}}
+{{/extends}}
