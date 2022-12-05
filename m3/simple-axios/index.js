@@ -1,6 +1,7 @@
 const express = require("express");
 const hbs = require("hbs");
 const waxOn = require("wax-on");
+const axios = require("axios");
 
 let app = express();
 app.set("view engine", "hbs");
@@ -15,6 +16,7 @@ app.use(
 
 // local db
 // TODO implement axios and db
+/*
 let movieRecords = [
   {
     id: 1,
@@ -31,6 +33,26 @@ let movieRecords = [
     rating: 9.2,
   },
 ];
+*/
+
+// update db with online
+let movieRecords = [];
+
+let config = {
+  method: "GET",
+  url: "https://movie-dce9.restdb.io/rest/movie",
+  headers: {
+    "x-api-key": "638471d3c890f30a8fd1f5da",
+  },
+};
+
+try {
+  let response = axios(config);
+  movieRecords = JSON.stringify(response.data);
+  console.log(movieRecords);
+} catch (error) {
+  console.log(error);
+}
 
 // routes
 app.get("/", function (req, res) {
