@@ -43,19 +43,27 @@ export default class RegisterFormAdv extends React.Component {
       let cloned = [...this.state.value, event.target.value];
       this.setState({
         interests: cloned,
-      })
+      });
     } else {
       let cloned = this.state.interests.slice();
+      // option 1
       let itemToRemove = cloned.findIndex(function (element) {
         return element === event.target.value;
       });
+      cloned = [
+        ...this.state.interests.slice(0, itemToRemove),
+        ...this.state.interests.slice(itemToRemove + 1),
+      ];
 
-      cloned = [...this.state.interests.slice(0, itemToRemove), ...this.state.interests.slice(itemToRemove + 1)]
+      // option 2
+      // let itemToRemove = this.state.interests.indexOf(event.target.value);
+      // let cloned = [...this.state.interests.slice(0, itemToRemove), ...this.state.interests.slice(itemToRemove + 1)]
+
       this.setState({
         interests: cloned,
       });
     }
-  }
+  };
 
   render() {
     return (
