@@ -1,0 +1,39 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "Don Don Donki",
+      "floor": 5,
+      "unit": 103,
+      "type": "Supermarket"
+    },
+    {
+      "id": 2,
+      "name": "McDonalds",
+      "floor": 3,
+      "unit": 204,
+      "type": "Fast-food restaurant"
+    },
+    {
+      "id": 3,
+      "name": "KFC",
+      "floor": 3,
+      "unit": 205,
+      "type": "Fast-food restaurant"
+    },
+    {
+      "id": 4,
+      "name": "Kinokuniya",
+      "floor": 4,
+      "unit": 111,
+      "type": "Bookstore"
+    },
+    {
+      "id": 5,
+      "name": "Uniqlo",
+      "floor": 1,
+      "unit": 110,
+      "type": "Clothing store"
+    }
+  ]
+}
