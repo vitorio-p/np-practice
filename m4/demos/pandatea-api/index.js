@@ -33,7 +33,7 @@ async function main() {
   });
 
   app.post("/pandatea", async (req, res) => {
-    const newData = await.db.collection('drinks').insertOne({
+    const newData = await db.collection('drinks').insertOne({
       name: req.body.name,
       type: req.body.type,
       price: req.body.price
