@@ -1,0 +1,19 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <h2>Watchlist</h2>
+    <a href="add-movie" class="btn btn-primary">Add Movie</a>
+    {{#each allMovies}}
+      <div class="card mt-3" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">Genre: {{this.genre}}</p>
+          <p class="card-text">Year: {{this.year}}</p>
+          <p class="card-text">Duration: {{this.duration}} mins</p>
+          <p class="card-text">Score: {{this.score}}%</p>
+          <a href="edit-movie/{{this.id}}" class="btn btn-secondary">Edit</a>
+          <a href="delete-movie/{{this.id}}" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    {{/each}}
+  {{/block}}
+{{/extends}}

@@ -1,89 +1,89 @@
 import React from "react";
 
-export default class Directory extends React.Component {
+export default class Menu extends React.Component {
   state = {
-    searchLevel: "",
-    searchType: "",
-    shops: [
+    searchFood: "",
+    searchIngredient: "",
+    menu: [
       {
-        id: 1,
-        name: "Fairprice",
-        type: "Supermarket",
-        level: 1,
-        unit: 1,
+        "_id": 101,
+        "name": "Chicken Udon Soup",
+        "price": 11.99,
+        "ingredients": ["chicken stock", "udon", "chicken breast"]
       },
       {
-        id: 1,
-        name: "Don Don Donki",
-        type: "Supermarket",
-        level: 2,
-        unit: 1,
+        "_id": 203,
+        "name": "Salmon Teriyaki Don",
+        "price": 9.9,
+        "ingredients": ["salmon", "rice", "soya sauce"]
       },
       {
-        id: 3,
-        name: "KFC",
-        type: "Fast food restaurant",
-        level: 1,
-        unit: 2,
+        "_id": 401,
+        "name": "Raw Salmon Slices",
+        "price": 15.99,
+        "ingredients": ["salmon"]
       },
       {
-        id: 4,
-        name: "Nike",
-        type: "Sports",
-        level: 3,
-        unit: 1,
-      },
-    ],
-  };
+        "_id": 402,
+        "name": "Chicken Miso Ramen",
+        "price": 15.99,
+        "ingredients": ["chicken", "miso", "ramen"]
+      }
+    ]
+  }
 
   render() {
+    for (let eachItem of this.state.menu) {
+      let ingredients = [];
+      for (let eachIngredient of eachItem.ingredients) {
+        ingredients.push(<li key={eachIngredient}>{eachIngredient}</li>)
+      }
+    }
     return (
       <React.Fragment>
-        <div>
-          <label>Level: </label>
-          <input
-            type="text"
-            value={this.state.searchLevel}
-            onChange={(event) => {
-              this.setState({
-                searchLevel: event.target.value,
-              });
-            }}
-          />
-        </div>
+        <h1>Menu</h1>
+        <h4>Search for</h4>
+        <label>Food: </label>
+        <input type="text" value={this.state.searchFood} onChange={(event) => {
+          this.setState({
+            searchFood: event.target.value,
+          });
+        }} />
         <br />
+        <label>Ingredient: </label>
+        <input type="text" value={this.state.searchIngredient} onChange={(event) => {
+          this.setState({
+            searchIngredient: event.target.value,
+          });
+        }} />
         <div>
-          <label>Type: </label>
-          <input
-            type="text"
-            value={this.state.searchType}
-            onChange={(event) => {
-              this.setState({
-                searchType: event.target.value,
-              });
-            }}
-          />
-        </div>
-        <br />
-        <div>
-          {this.state.shops
-            .filter((eachShop) =>
-              eachShop.level.includes(this.state.searchLevel) &&
-              this.state.searchType === ""
-                ? eachShop.type
-                : eachShop.type.includes(this.state.searchType)
+          {this.state.menu
+            .filter((eachFood) =>
+              (eachFood.name
+                .toUpperCase()
+                .includes(this.state.searchFood.toUpperCase())
+              ) && this.state.searchIngredient == "" ? eachFood.ingredients : (
+                eachFood.ingredients
+                  .includes(this.state.searchIngredient)
+              )
             )
-            .map((eachShop) => (
-              <div key={eachShop.id}>
-                <h1>{eachShop.name}</h1>
-                <h2>{eachShop.type}</h2>
-                <h3>
-                  Unit: {eachShop.level}-{eachShop.unit}
-                </h3>
+            .map((eachFood) => (
+              <div key={eachFood._id}>
+                <h2>{eachFood.name}</h2>
+                <h3>Ingredients:</h3>
+                <ul>
+                  {eachFood.ingredients.map((eachIngredient, index) => (
+                    <li key={index}>
+                      {eachIngredient}
+                    </li>
+                  ))}
+                </ul>
+                <span>Price: {eachFood.price}</span>
               </div>
-            ))}
+            ))
+          }
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
