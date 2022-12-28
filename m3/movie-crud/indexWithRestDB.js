@@ -1,7 +1,6 @@
 const express = require("express");
 const hbs = require("hbs");
 const wax = require("wax-on");
-const axios = require("axios");
 
 require("handlebars-helpers")({
   handlebars: hbs,
@@ -16,37 +15,64 @@ wax.setLayoutPath("./views/layouts");
 
 app.use(express.urlencoded({ extended: false }));
 
-// VIEW ALL
+/*
+let movieRecords = [
+  {
+    id: 1,
+    name: "Knives Out",
+    genre: "Mystery & thriller/Comedy",
+    year: 2019,
+    duration: 130,
+    score: 97,
+  },
+  {
+    id: 2,
+    name: "Violent Night",
+    genre: "Holiday/Action",
+    year: 2022,
+    duration: 101,
+    score: 73,
+  },
+  {
+    id: 3,
+    name: "Avatar",
+    genre: "Sci-fi/Adventure",
+    year: 2009,
+    duration: 155,
+    score: 82,
+  },
+];
+*/
 
+// VIEW ALL
 app.get("/", async function (req, res) {
+  let allMovies = [];
+
   let config = {
     method: "GET",
-    url: "https://movie-dce9.restdb.io/rest/movie",
+    url: "",
     headers: {
-      "x-api-key": "63ac3a7bf43a573dae0957c3",
+      "x-api-key": "",
     },
   };
 
   try {
-    console.log("connecting to db");
     let response = await axios(config);
-    console.log("connected to db");
-    console.log(response.data);
+    allMovies = JSON.stringify(res.data);
     res.render("all-movie", {
-      allMovies: response.data,
+      allMovies: allMovies,
     });
   } catch (err) {
     console.log(err);
   }
 });
 
-
 // ADD
 app.get("/add-movie", function (req, res) {
   res.render("add-movie");
 });
 
-app.post("/add-movie", async function (req, res) {
+app.post("/add-movie", function (req, res) {
   let name = req.body.name;
   let genre = req.body.genre;
   let year = req.body.year;
@@ -62,21 +88,8 @@ app.post("/add-movie", async function (req, res) {
     score: score,
   };
 
-  axios({
-    method: "POST",
-    url: "https://movie-dce9.restdb.io/rest/movie",
-    headers: {
-      "x-api-key": "63ac3a7bf43a573dae0957c3",
-    },
-    data: newMovie,
-  })
-    .then(function (response) {
-      console.log(response);
-      res.redirect("/");
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  movieRecords.push(newMovie);
+  res.redirect("/");
 });
 
 // DELETE
