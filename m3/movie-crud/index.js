@@ -2,6 +2,7 @@ const express = require("express");
 const hbs = require("hbs");
 const wax = require("wax-on");
 const axios = require("axios");
+const e = require("express");
 
 require("handlebars-helpers")({
   handlebars: hbs,
@@ -15,6 +16,9 @@ wax.on(hbs.handlebars);
 wax.setLayoutPath("./views/layouts");
 
 app.use(express.urlencoded({ extended: false }));
+
+// LOCAL DB
+let movieRecords = [];
 
 // VIEW ALL
 
@@ -31,7 +35,8 @@ app.get("/", async function (req, res) {
     console.log("connecting to db");
     let response = await axios(config);
     console.log("connected to db");
-    console.log(response.data);
+    movieRecords = response.data;
+    console.log(movieRecords);
     res.render("all-movie", {
       allMovies: response.data,
     });
@@ -39,7 +44,6 @@ app.get("/", async function (req, res) {
     console.log(err);
   }
 });
-
 
 // ADD
 app.get("/add-movie", function (req, res) {
@@ -71,7 +75,7 @@ app.post("/add-movie", async function (req, res) {
     data: newMovie,
   })
     .then(function (response) {
-      console.log(response);
+      console.log("movie added");
       res.redirect("/");
     })
     .catch(function (error) {
@@ -88,14 +92,13 @@ app.get("/delete-movie/:delete_movie_id", function (req, res) {
       return false;
     }
   });
-  console.log(movieRecord);
   res.render("delete-movie", {
     movieRecord: movieRecord,
   });
 });
 
 app.post("/delete-movie/:delete_movie_id", function (req, res) {
-  let indexToDelete = movieRecords.findIndex(function (record) {
+  let movieRecord = movieRecords.find(function (record) {
     if (record.id == req.params.delete_movie_id) {
       return true;
     } else {
@@ -103,10 +106,20 @@ app.post("/delete-movie/:delete_movie_id", function (req, res) {
     }
   });
 
-  console.log(indexToDelete);
-
-  movieRecords.splice(indexToDelete, 1);
-  res.redirect("/");
+  axios({
+    method: "DELETE",
+    url: `https://movie-dce9.restdb.io/rest/movie/${movieRecord._id}`,
+    headers: {
+      "x-api-key": "63ac3a7bf43a573dae0957c3",
+    },
+  })
+    .then(function (response) {
+      console.log("movie deleted");
+      res.redirect("/");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 // EDIT
