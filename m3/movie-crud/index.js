@@ -36,7 +36,6 @@ app.get("/", async function (req, res) {
     let response = await axios(config);
     console.log("connected to db");
     movieRecords = response.data;
-    console.log(movieRecords);
     res.render("all-movie", {
       allMovies: response.data,
     });
@@ -146,7 +145,7 @@ app.post("/edit-movie/:edit_movie_id", function (req, res) {
     score: req.body.score,
   };
 
-  let indexToEdit = movieRecords.findIndex(function (record) {
+  let movieRecord = movieRecords.find(function (record) {
     if (record.id == req.params.edit_movie_id) {
       return true;
     } else {
@@ -154,9 +153,21 @@ app.post("/edit-movie/:edit_movie_id", function (req, res) {
     }
   });
 
-  movieRecords[indexToEdit] = editedMovie;
-
-  res.redirect("/");
+  axios({
+    method: "PUT",
+    url: `https://movie-dce9.restdb.io/rest/movie/${movieRecord._id}`,
+    headers: {
+      "x-api-key": "63ac3a7bf43a573dae0957c3",
+    },
+    data: editedMovie
+  })
+    .then(function (response) {
+      console.log("movie updated");
+      res.redirect("/");
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 app.listen(3000, () => {
