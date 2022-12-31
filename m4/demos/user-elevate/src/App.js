@@ -1,6 +1,6 @@
 import React from "react";
 import AddUser from "./AddUser";
-import User from "./User";
+import UserList from "./UserList";
 import "./App.css";
 import EditUser from "./EditUser";
 
@@ -53,7 +53,7 @@ export default class App extends React.Component {
                     updateFormField={this.updateFormField}
                   />
                 ) : (
-                  <User
+                  <UserList
                     user={user}
                     beginEdit={this.beginEdit}
                     deleteUser={this.deleteUser}
