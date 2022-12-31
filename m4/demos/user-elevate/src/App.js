@@ -1,5 +1,6 @@
 import React from "react";
 import AddUser from "./AddUser";
+import User from "./User";
 import "./App.css";
 
 export default class App extends React.Component {
@@ -65,24 +66,11 @@ export default class App extends React.Component {
                     <button onClick={this.cancelEdit}>Cancel edit</button>
                   </div>
                 ) : (
-                  <div>
-                    <h3>{user.name}</h3>
-                    <h4>{user.email}</h4>
-                    <button
-                      onClick={() => {
-                        this.beginEdit(user);
-                      }}
-                    >
-                      Update
-                    </button>
-                    <button
-                      onClick={() => {
-                        this.deleteUser(user);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
+                  <User
+                    user={user}
+                    beginEdit={this.beginEdit}
+                    deleteUser={this.deleteUser}
+                  />
                 )}
               </div>
             </React.Fragment>
