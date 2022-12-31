@@ -2,6 +2,7 @@ import React from "react";
 import AddUser from "./AddUser";
 import User from "./User";
 import "./App.css";
+import EditUser from "./EditUser";
 
 export default class App extends React.Component {
   state = {
@@ -43,28 +44,14 @@ export default class App extends React.Component {
             <React.Fragment>
               <div class="box">
                 {user._id === this.state.userBeingEdited ? (
-                  <div>
-                    <input
-                      type="text"
-                      name="editedUserName"
-                      onChange={this.updateFormField}
-                      value={this.state.editedUserName}
-                    />
-                    <input
-                      type="text"
-                      name="editedUserEmail"
-                      onChange={this.updateFormField}
-                      value={this.state.editedUserEmail}
-                    />
-                    <button
-                      onClick={() => {
-                        this.confirmEdit(user);
-                      }}
-                    >
-                      Confirm
-                    </button>
-                    <button onClick={this.cancelEdit}>Cancel edit</button>
-                  </div>
+                  <EditUser
+                    user={user}
+                    editedUserEmail={this.state.editedUserEmail}
+                    editedUserName={this.state.editedUserName}
+                    confirmEdit={this.confirmEdit}
+                    cancelEdit={this.cancelEdit}
+                    updateFormField={this.updateFormField}
+                  />
                 ) : (
                   <User
                     user={user}
