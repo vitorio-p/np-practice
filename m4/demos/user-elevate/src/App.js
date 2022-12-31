@@ -41,6 +41,8 @@ export default class App extends React.Component {
           return (
             <React.Fragment>
               <div class="box">
+
+
                 {user._id === this.state.userBeingEdited ? (
                   <div>
                     <input
@@ -53,6 +55,8 @@ export default class App extends React.Component {
                 ) : (
                   <h3>{user.name}</h3>
                 )}
+
+
                 {user._id === this.state.userBeingEdited ? (
                   <div>
                     <input
@@ -65,6 +69,8 @@ export default class App extends React.Component {
                 ) : (
                   <h4>{user.email}</h4>
                 )}
+
+
                 {user._id === this.state.userBeingEdited ? (
                   <div>
                     <button
@@ -94,6 +100,8 @@ export default class App extends React.Component {
                     </button>
                   </div>
                 )}
+
+
               </div>
             </React.Fragment>
           );
@@ -132,7 +140,7 @@ export default class App extends React.Component {
   deleteUser = (user) => {
     let index = this.state.users.findIndex((u) => u._id === user._id);
     this.setState({
-      users: [...this.state.slice(0, index), ...this.state.slice(index + 1)],
+      users: [...this.state.users.slice(0, index), ...this.state.users.slice(index + 1)],
     });
   };
 
