@@ -74,7 +74,7 @@ app.post("/add-movie", async function (req, res) {
     data: newMovie,
   })
     .then(function (response) {
-      console.log("movie added");
+      console.log("new movie added");
       res.redirect("/");
     })
     .catch(function (error) {
